@@ -21,7 +21,6 @@ import {
 } from '@/constants/SOURCES';
 import {
   MAP_CENTER,
-  MAP_MAX_BOUNDS,
   MAP_STYLE_LIGHT,
   MAP_STYLE_DARK,
   MAP_ZOOM,
@@ -79,7 +78,6 @@ const Map = () => {
         longitude: MAP_CENTER.lng,
         latitude: MAP_CENTER.lat,
       }}
-      maxBounds={MAP_MAX_BOUNDS}
       maxPitch={60}
       dragRotate
       touchPitch

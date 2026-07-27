@@ -1,5 +1,3 @@
-import { type LngLatBoundsLike } from 'maplibre-gl';
-
 import type { Coordinates } from '@/types/map.types';
 
 /**
@@ -10,15 +8,6 @@ export const MAP_CENTER: Coordinates = {
   lng: -118.25,
   lat: 34.05,
 };
-
-/**
- * @constant
- * @description The maximum bounds of the map - Southern California region
- */
-export const MAP_MAX_BOUNDS: Extract<
-  LngLatBoundsLike,
-  [number, number, number, number]
-> = [-121.81, 32.2, -113.9, 35.2];
 
 /**
  * @constant
