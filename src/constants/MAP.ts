@@ -22,11 +22,19 @@ export const MAP_MAX_BOUNDS: Extract<
 
 /**
  * @constant
- * @description The map style spec
+ * @description The map style spec for light mode
  * @see {@link https://openfreemap.org/}
  */
-export const MAP_STYLE =
+export const MAP_STYLE_LIGHT =
   'https://tiles.openfreemap.org/styles/bright';
+
+/**
+ * @constant
+ * @description The map style spec for dark mode
+ * @see {@link https://openfreemap.org/}
+ */
+export const MAP_STYLE_DARK =
+  'https://tiles.openfreemap.org/styles/dark';
 
 /**
  * @constant

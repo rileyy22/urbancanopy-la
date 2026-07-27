@@ -10,6 +10,7 @@ import {
 } from 'react-map-gl/maplibre';
 
 import TooltipManager from '@/client/TooltipManager';
+import useTheme from '@/client/hooks/useTheme';
 import BuildingsLayer from '@/client/layers/BuildingsLayer';
 import HillshadeLayer from '@/client/layers/HillshadeLayer';
 import MapControls from '@/client/MapControls';
@@ -21,7 +22,8 @@ import {
 import {
   MAP_CENTER,
   MAP_MAX_BOUNDS,
-  MAP_STYLE,
+  MAP_STYLE_LIGHT,
+  MAP_STYLE_DARK,
   MAP_ZOOM,
 } from '@/constants/MAP';
 import useMapStore from '@/stores/useMapStore';
@@ -30,6 +32,7 @@ maplibregl.addProtocol('om', omProtocol); // implemented in `TemperatureSource`
 
 const Map = () => {
   const mapRef = useRef<MapRef>(null);
+  const theme = useTheme();
 
   const visibleLayers = useMapStore(s => s.visibleLayers);
 
@@ -68,7 +71,9 @@ const Map = () => {
   return (
     <MapLibreMap
       ref={mapRef}
-      mapStyle={MAP_STYLE}
+      mapStyle={
+        theme === 'dark' ? MAP_STYLE_DARK : MAP_STYLE_LIGHT
+      }
       initialViewState={{
         zoom: MAP_ZOOM,
         longitude: MAP_CENTER.lng,

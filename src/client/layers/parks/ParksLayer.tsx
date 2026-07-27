@@ -1,5 +1,6 @@
 import { Layer } from 'react-map-gl/maplibre';
 
+import useTheme from '@/client/hooks/useTheme';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
 
@@ -8,12 +9,16 @@ const ParksLayer = ({
 }: {
   isLayerVisible: boolean;
 }) => {
+  const theme = useTheme();
+
   return (
     <Layer
       id={MAP_LAYER_IDS.parks}
       source={MAP_SOURCE_IDS.parks}
       type='fill'
-      beforeId='label_other' // see basemap style spec
+      beforeId={
+        theme === 'dark' ? 'place_other' : 'label_other' // see basemap style spec
+      }
       filter={[
         'any',
         ['==', ['geometry-type'], 'Polygon'],

@@ -1,5 +1,6 @@
 import { Layer } from 'react-map-gl/maplibre';
 
+import useTheme from '@/client/hooks/useTheme';
 import { TRANSIT_STOPS_MIN_ZOOM } from '@/constants/MAP';
 import { MAP_LAYER_IDS } from '@/constants/MAP_LAYER_IDS';
 import { MAP_SOURCE_IDS } from '@/constants/MAP_SOURCE_IDS';
@@ -9,13 +10,17 @@ const TransitLayer = ({
 }: {
   isLayerVisible: boolean;
 }) => {
+  const theme = useTheme();
+
   return (
     <>
       <Layer
         id={MAP_LAYER_IDS.transitRoutes}
         source={MAP_SOURCE_IDS.transitRoutes}
         type='line'
-        beforeId='label_other' // see basemap style spec
+        beforeId={
+          theme === 'dark' ? 'place_other' : 'label_other' // see basemap style spec
+        }
         filter={['==', ['geometry-type'], 'LineString']}
         layout={{
           visibility: isLayerVisible ? 'visible' : 'none',
@@ -41,7 +46,9 @@ const TransitLayer = ({
         id={MAP_LAYER_IDS.transitStops}
         source={MAP_SOURCE_IDS.transitStops}
         type='circle'
-        beforeId='label_city'
+        beforeId={
+          theme === 'dark' ? 'place_city' : 'label_city' // see basemap style spec
+        }
         minzoom={TRANSIT_STOPS_MIN_ZOOM}
         filter={[
           'all',
@@ -69,7 +76,9 @@ const TransitLayer = ({
         id={MAP_LAYER_IDS.transitMetroStops}
         source={MAP_SOURCE_IDS.transitStops}
         type='symbol'
-        beforeId='label_city'
+        beforeId={
+          theme === 'dark' ? 'place_city' : 'label_city' // see basemap style spec
+        }
         filter={[
           'all',
           ['==', ['geometry-type'], 'Point'],
