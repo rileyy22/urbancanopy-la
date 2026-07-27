@@ -1,3 +1,5 @@
+@use '../../app/palette';
+
 .LayerControl {
   width: 260px;
   position: absolute;
@@ -29,7 +31,7 @@
       width: 14px;
       height: 14px;
       margin-left: 2px;
-      background: var(--surface);
+      background: palette.$white;
       border-radius: 50px;
       transition: transform 150ms ease;
       will-change: transform;

@@ -5,20 +5,20 @@
   --surface: #{palette.$white};
   --surface-variant: #{palette.$alabaster};
   --on-surface: #{palette.$cod-gray};
-  --on-surface-variant: #{palette.$emperor};
+  --on-surface-variant: #{palette.$boulder};
   --outline: #{palette.$gray-chateau};
   --outline-variant: #{palette.$iron};
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary: #{palette.$green-pea};
+    --primary: #{palette.$emerald};
     --surface: #{palette.$cod-gray};
     --surface-variant: #{palette.$mine-shaft};
     --on-surface: #{palette.$white};
-    --on-surface-variant: #{palette.$emperor};
-    --outline: #{palette.$gray-chateau};
-    --outline-variant: #{palette.$iron};
+    --on-surface-variant: #{palette.$mercury};
+    --outline: #{palette.$dove-gray};
+    --outline-variant: #{palette.$emperor};
   }
 }
 

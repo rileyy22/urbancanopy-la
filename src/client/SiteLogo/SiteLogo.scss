@@ -27,5 +27,9 @@
         color: var(--primary);
       }
     }
+
+    p.description {
+      color: var(--on-surface-variant);
+    }
   }
 }
