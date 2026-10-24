@@ -84,6 +84,7 @@
     background: var(--surface-variant);
 
     .pulsing-dot {
+      position: relative;
       grid-row: 1 / -1;
       width: 8px;
       height: 8px;
@@ -95,10 +96,7 @@
       &::after {
         content: '';
         position: absolute;
-        width: 24px;
-        height: 24px;
-        margin-top: -8px;
-        margin-left: -8px;
+        inset: -8px;
         border-radius: 50%;
         background: color-mix(
           in srgb,
