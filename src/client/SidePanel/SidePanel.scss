@@ -38,12 +38,16 @@
   > .body {
     overflow-y: auto;
 
-    .section {
+    section {
       display: flex;
       flex-direction: column;
       gap: 12px;
       padding: 16px;
       cursor: default;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--outline-variant);
+      }
 
       h2 {
         font-size: 12px;

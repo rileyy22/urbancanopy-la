@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import ChevronSvg from '@/assets/chevron.svg';
+import POILayerControl from '@/client/LayerControl/POILayerControl';
 import LocationInsights from '@/client/LocationInsights';
 import SiteLogo from '@/client/SiteLogo';
 import {
@@ -48,7 +49,7 @@ const SidePanel = () => {
       </div>
       <div className='body'>
         {!isWeatherError && (
-          <section className='section'>
+          <section>
             <h2>Current Conditions</h2>
             <LocationInsights
               isLoading={!forecastData || !aqiData}
@@ -58,6 +59,10 @@ const SidePanel = () => {
             />
           </section>
         )}
+        <section>
+          <h2>Public Spaces & Amenities</h2>
+          <POILayerControl />
+        </section>
       </div>
     </aside>
   );
