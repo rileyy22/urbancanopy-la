@@ -5,9 +5,13 @@ import {
   type GeolocateResultEvent,
 } from 'react-map-gl/maplibre';
 
-import LayerControl from '@/client/LayerControl';
 import useMapStore from '@/stores/useMapStore';
 
+/**
+ * @description MapLibre's built-in map controls.
+ * Layer controls live in `LayerControl/` and are
+ * rendered in `SidePanel`.
+ */
 const MapControls = () => {
   const setUserLocation = useMapStore(
     s => s.setUserLocation
@@ -23,8 +27,7 @@ const MapControls = () => {
   };
 
   return (
-    <div className='MapControls'>
-      <LayerControl />
+    <>
       <GeolocateControl
         position='top-right'
         positionOptions={{ enableHighAccuracy: true }}
@@ -42,7 +45,7 @@ const MapControls = () => {
         position='bottom-right'
         unit='imperial'
       />
-    </div>
+    </>
   );
 };
 

@@ -40,6 +40,3 @@ export const ENVIRONMENT_LAYERS = [
 
 export type EnvironmentLayerId =
   (typeof ENVIRONMENT_LAYERS)[number]['id'];
-
-export const DEFAULT_VISIBLE_ENVIRONMENT_LAYER: EnvironmentLayerId =
-  'treeDensity';

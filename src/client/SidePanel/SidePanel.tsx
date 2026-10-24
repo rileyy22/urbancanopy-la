@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import ChevronSvg from '@/assets/chevron.svg';
+import EnvironmentLayerControl from '@/client/LayerControl/EnvironmentLayerControl';
 import POILayerControl from '@/client/LayerControl/POILayerControl';
 import LocationInsights from '@/client/LocationInsights';
 import SiteLogo from '@/client/SiteLogo';
@@ -62,6 +63,15 @@ const SidePanel = () => {
         <section>
           <h2>Public Spaces & Amenities</h2>
           <POILayerControl />
+        </section>
+        <section>
+          <hgroup>
+            <h2>Environmental Analysis</h2>
+            <p className='hint'>
+              Show one overlay at a time
+            </p>
+          </hgroup>
+          <EnvironmentLayerControl />
         </section>
       </div>
     </aside>
