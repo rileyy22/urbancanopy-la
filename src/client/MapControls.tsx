@@ -9,7 +9,7 @@ import useMapStore from '@/stores/useMapStore';
 
 /**
  * @description MapLibre's built-in map controls.
- * Layer controls live in `LayerControl/` and are
+ * Layer controls live in `LayerControls/` and are
  * rendered in `SidePanel`.
  */
 const MapControls = () => {

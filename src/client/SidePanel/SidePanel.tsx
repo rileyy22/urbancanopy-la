@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import ChevronSvg from '@/assets/chevron.svg';
-import EnvironmentLayerControl from '@/client/LayerControl/EnvironmentLayerControl';
-import POILayerControl from '@/client/LayerControl/POILayerControl';
+import EnvironmentLayerControl from '@/client/LayerControls/EnvironmentLayerControl';
+import POILayerControl from '@/client/LayerControls/POILayerControl';
 import LocationInsights from '@/client/LocationInsights';
 import SiteLogo from '@/client/SiteLogo';
 import {

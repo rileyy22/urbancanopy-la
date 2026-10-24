@@ -26,7 +26,7 @@ React Compiler is on — no manual `useMemo`/`useCallback`. Alias `@/*` → `src
 
 ## Other
 
-- `src/stores/useMapStore.ts` — Zustand: visible layers + loaded sources (drives `LayerControl` loading state).
+- `src/stores/useMapStore.ts` — Zustand: visible layers + loaded sources (drives loading states in `LayerControls/`).
 - Temperature uses `om://` protocol (`@openmeteo/weather-map-layer`), registered in `Map.tsx`.
 - `src/scripts/` — one-off ETL into Supabase; not app runtime, don't run unless asked.
 - Commits: `UC-<n>: <summary>`, n = next after latest in `git log`.
