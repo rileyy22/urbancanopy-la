@@ -14,13 +14,11 @@ import './LocationInsights.scss';
 
 type LocationInsightsProps = WeatherForecastProperties
   & WeatherAQIProperties & {
-    isError: boolean;
     isLoading: boolean;
     userLocation: Coordinates;
   };
 
 const LocationInsights = ({
-  isError,
   isLoading,
   userLocation,
   apparentTemperature,
@@ -31,10 +29,6 @@ const LocationInsights = ({
 }: LocationInsightsProps) => {
   const { Icon: WeatherIcon, label: weatherDesc } =
     getWeatherCode(weatherCode);
-
-  if (isError) {
-    return null;
-  }
 
   if (isLoading) {
     return (

@@ -1,9 +1,11 @@
 import { create } from 'zustand';
 import { LAYERS, type LayerId } from '@/constants/LAYERS';
+import { MAP_CENTER } from '@/constants/MAP';
 import {
   SOURCES,
   type SourceId,
 } from '@/constants/SOURCES';
+import type { Coordinates } from '@/types/map.types';
 
 type VisibleLayers = Record<LayerId, boolean>;
 type LoadedSources = Record<SourceId, boolean>;
@@ -11,6 +13,7 @@ type LoadedSources = Record<SourceId, boolean>;
 type MapStore = {
   loadedSources: LoadedSources;
   visibleLayers: VisibleLayers;
+  userLocation: Coordinates;
   setLoadedSource: (
     id: SourceId,
     isLoaded: boolean
@@ -19,6 +22,7 @@ type MapStore = {
     id: LayerId,
     isVisible: boolean
   ) => void;
+  setUserLocation: (location: Coordinates) => void;
 };
 
 const DEFAULT_LOADED_SOURCES = Object.fromEntries(
@@ -31,10 +35,12 @@ const DEFAULT_VISIBLE_LAYERS = Object.fromEntries(
 
 /**
  * @description Zustand store for managing map state, e.g. visible layers
+ * and the user's geolocated position
  */
 const useMapStore = create<MapStore>(set => ({
   loadedSources: DEFAULT_LOADED_SOURCES,
   visibleLayers: DEFAULT_VISIBLE_LAYERS,
+  userLocation: MAP_CENTER,
   setLoadedSource: (id, isLoaded) =>
     set(state => ({
       loadedSources: {
@@ -49,6 +55,8 @@ const useMapStore = create<MapStore>(set => ({
         [id]: isVisible,
       },
     })),
+  setUserLocation: location =>
+    set({ userLocation: location }),
 }));
 
 export default useMapStore;

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   GeolocateControl,
   NavigationControl,
@@ -7,25 +6,12 @@ import {
 } from 'react-map-gl/maplibre';
 
 import LayerControl from '@/client/LayerControl';
-import LocationInsights from '@/client/LocationInsights';
-import {
-  useWeatherForecast,
-  useWeatherAQI,
-} from '@/client/hooks/useWeatherData';
-import { MAP_CENTER } from '@/constants/MAP';
-import type { Coordinates } from '@/types/map.types';
-
-import './MapControls.scss';
+import useMapStore from '@/stores/useMapStore';
 
 const MapControls = () => {
-  const [userLocation, setUserLocation] =
-    useState<Coordinates>(MAP_CENTER);
-
-  const { data: forecastData, error: forecastError } =
-    useWeatherForecast(userLocation);
-
-  const { data: aqiData, error: aqiError } =
-    useWeatherAQI(userLocation);
+  const setUserLocation = useMapStore(
+    s => s.setUserLocation
+  );
 
   const handleOutOfMaxBounds = () => {
     alert('You are outside the maximum bounds of the map.');
@@ -39,13 +25,6 @@ const MapControls = () => {
   return (
     <div className='MapControls'>
       <LayerControl />
-      <LocationInsights
-        isError={forecastError || aqiError}
-        isLoading={!forecastData || !aqiData}
-        userLocation={userLocation}
-        {...forecastData}
-        {...aqiData}
-      />
       <GeolocateControl
         position='top-right'
         positionOptions={{ enableHighAccuracy: true }}

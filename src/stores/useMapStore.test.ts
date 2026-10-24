@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 
 import { LAYERS, type LayerId } from '@/constants/LAYERS';
+import { MAP_CENTER } from '@/constants/MAP';
 import useMapStore from '@/stores/useMapStore';
 
 describe('useMapStore', () => {
@@ -12,6 +13,7 @@ describe('useMapStore', () => {
           layer.isVisibleByDefault,
         ])
       ) as Record<LayerId, boolean>,
+      userLocation: MAP_CENTER,
     });
   });
 
@@ -55,5 +57,20 @@ describe('useMapStore', () => {
     useMapStore.getState().setVisibleLayer('parks', false);
     const after = useMapStore.getState().visibleLayers;
     expect(after).not.toBe(before);
+  });
+
+  it('initializes the user location to the map center', () => {
+    expect(useMapStore.getState().userLocation).toEqual(
+      MAP_CENTER
+    );
+  });
+
+  it('correctly sets the user location', () => {
+    const location = { lng: -118.4, lat: 34.1 };
+    useMapStore.getState().setUserLocation(location);
+
+    expect(useMapStore.getState().userLocation).toEqual(
+      location
+    );
   });
 });

@@ -4,13 +4,29 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import ChevronSvg from '@/assets/chevron.svg';
+import LocationInsights from '@/client/LocationInsights';
 import SiteLogo from '@/client/SiteLogo';
+import {
+  useWeatherForecast,
+  useWeatherAQI,
+} from '@/client/hooks/useWeatherData';
+import useMapStore from '@/stores/useMapStore';
 
 import './SidePanel.scss';
 
 const SidePanel = () => {
   const [isCollapsed, setIsCollapsed] =
     useState<boolean>(false);
+
+  const userLocation = useMapStore(s => s.userLocation);
+
+  const { data: forecastData, error: forecastError } =
+    useWeatherForecast(userLocation);
+
+  const { data: aqiData, error: aqiError } =
+    useWeatherAQI(userLocation);
+
+  const isWeatherError = forecastError || aqiError;
 
   return (
     <aside
@@ -30,7 +46,19 @@ const SidePanel = () => {
           <ChevronSvg className='chevron' />
         </button>
       </div>
-      <div className='body' />
+      <div className='body'>
+        {!isWeatherError && (
+          <section className='section'>
+            <h2>Current Conditions</h2>
+            <LocationInsights
+              isLoading={!forecastData || !aqiData}
+              userLocation={userLocation}
+              {...forecastData}
+              {...aqiData}
+            />
+          </section>
+        )}
+      </div>
     </aside>
   );
 };

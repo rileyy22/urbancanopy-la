@@ -37,6 +37,22 @@
 
   > .body {
     overflow-y: auto;
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 16px;
+      cursor: default;
+
+      h2 {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--on-surface-variant);
+      }
+    }
   }
 
   &.collapsed {
