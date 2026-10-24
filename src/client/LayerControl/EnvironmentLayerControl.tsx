@@ -8,18 +8,16 @@ import {
   ENVIRONMENT_LAYERS,
   type EnvironmentLayerId,
 } from '@/constants/ENVIRONMENT_LAYERS';
-import { type LayerId } from '@/constants/LAYERS';
 import useMapStore from '@/stores/useMapStore';
 
-const EnvironmentLayerControl = ({
-  setVisibleLayer,
-}: {
-  setVisibleLayer: (
-    id: LayerId,
-    isVisible: boolean
-  ) => void;
-}) => {
+import './EnvironmentLayerControl.scss';
+
+const EnvironmentLayerControl = () => {
   const loadedSources = useMapStore(s => s.loadedSources);
+
+  const setVisibleLayer = useMapStore(
+    s => s.setVisibleLayer
+  );
 
   const [isControlEnabled, setIsControlEnabled] =
     useState<boolean>(false);

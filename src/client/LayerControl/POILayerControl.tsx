@@ -1,21 +1,18 @@
 import * as Switch from '@radix-ui/react-switch';
 import classNames from 'classnames';
 
-import { type LayerId } from '@/constants/LAYERS';
 import { POI_LAYERS } from '@/constants/POI_LAYERS';
 import useMapStore from '@/stores/useMapStore';
 
-const POILayerControl = ({
-  visibleLayers,
-  setVisibleLayer,
-}: {
-  visibleLayers: Record<LayerId, boolean>;
-  setVisibleLayer: (
-    id: LayerId,
-    isVisible: boolean
-  ) => void;
-}) => {
+import './POILayerControl.scss';
+
+const POILayerControl = () => {
   const loadedSources = useMapStore(s => s.loadedSources);
+  const visibleLayers = useMapStore(s => s.visibleLayers);
+
+  const setVisibleLayer = useMapStore(
+    s => s.setVisibleLayer
+  );
 
   return (
     <div className='POILayerControl'>

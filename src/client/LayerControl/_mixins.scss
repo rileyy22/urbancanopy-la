@@ -1,0 +1,78 @@
+@use '../../app/palette';
+
+@mixin card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--outline-variant);
+  background-color: var(--surface);
+  cursor: default;
+
+  h2 {
+    font-size: 14px;
+  }
+}
+
+@mixin list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 4px;
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    &:not(.loaded) {
+      pointer-events: none;
+      opacity: 0.6;
+
+      span {
+        font-style: italic;
+      }
+    }
+  }
+
+  .icon {
+    width: 22px;
+  }
+}
+
+@mixin switch {
+  width: 30px;
+  height: 18px;
+  border-radius: 50px;
+  border: none;
+  background: var(--outline-variant);
+  transition: background 150ms ease;
+  cursor: pointer;
+
+  &[data-state='checked'] {
+    background: var(--primary);
+  }
+
+  .thumb {
+    display: block;
+    width: 14px;
+    height: 14px;
+    margin-left: 2px;
+    background: palette.$white;
+    border-radius: 50px;
+    transition: transform 150ms ease;
+    will-change: transform;
+
+    &[data-state='checked'] {
+      transform: translateX(12px);
+    }
+  }
+}

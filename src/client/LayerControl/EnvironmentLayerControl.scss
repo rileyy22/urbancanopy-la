@@ -1,0 +1,52 @@
+@use 'mixins';
+
+.EnvironmentLayerControl {
+  @include mixins.card;
+
+  > .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 4px;
+  }
+
+  > .radio-group {
+    @include mixins.list;
+  }
+
+  .switch {
+    @include mixins.switch;
+  }
+
+  .radio-btn {
+    width: 16px;
+    height: 16px;
+    display: grid;
+    border: 1.5px solid var(--outline);
+    border-radius: 50%;
+    background: var(--surface);
+    cursor: pointer;
+
+    > .indicator {
+      place-self: center;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    &[data-state='checked'] {
+      border-color: var(--primary);
+    }
+
+    &:disabled {
+      border-color: var(--outline-variant);
+      background: var(--surface-variant);
+      cursor: default;
+
+      > .indicator {
+        background: var(--outline-variant);
+      }
+    }
+  }
+}
