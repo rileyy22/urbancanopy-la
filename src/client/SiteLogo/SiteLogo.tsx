@@ -10,7 +10,9 @@ const SiteLogo = () => {
         <h1>
           UrbanCanopy <span className='city'>LA</span>
         </h1>
-        <p className='description'>Urban trekking. Cooler journeys.</p>
+        <p className='description'>
+          Urban trekking. Cooler journeys.
+        </p>
       </hgroup>
     </div>
   );

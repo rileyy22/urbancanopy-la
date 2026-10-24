@@ -1,27 +1,24 @@
 .SiteLogo {
-  position: absolute;
   display: flex;
-  top: 16px;
-  left: 16px;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid var(--outline-variant);
-  background-color: var(--surface);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
   cursor: default;
 
   > svg.logo {
-    width: 50px;
+    flex-shrink: 0;
+    width: 40px;
   }
 
   > hgroup {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     gap: 2px;
+    min-width: 0;
 
     h1 {
-      font-size: 20px;
+      font-size: 18px;
+      white-space: nowrap;
 
       .city {
         color: var(--primary);
@@ -30,6 +27,13 @@
 
     p.description {
       color: var(--on-surface-variant);
+      font-size: 12px;
     }
+  }
+}
+
+@media (max-width: 650px) {
+  .SiteLogo > svg.logo {
+    width: 32px;
   }
 }

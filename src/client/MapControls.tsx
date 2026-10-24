@@ -8,7 +8,6 @@ import {
 
 import LayerControl from '@/client/LayerControl';
 import LocationInsights from '@/client/LocationInsights';
-import SiteLogo from '@/client/SiteLogo';
 import {
   useWeatherForecast,
   useWeatherAQI,
@@ -39,7 +38,6 @@ const MapControls = () => {
 
   return (
     <div className='MapControls'>
-      <SiteLogo />
       <LayerControl />
       <LocationInsights
         isError={forecastError || aqiError}
